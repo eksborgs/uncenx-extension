@@ -1,4 +1,5 @@
 import com.lagradost.cloudstream3.gradle.CloudstreamExtension
+import com.android.build.gradle.BaseExtension
 
 buildscript {
     repositories {
@@ -21,20 +22,17 @@ configure<CloudstreamExtension> {
     setRepoUrl("https://github.com/eksborgs/uncenx-extension")
 }
 
-android {
-    compileSdk = 33
+configure<BaseExtension> {
+    compileSdkVersion(33)
 
     defaultConfig {
-        minSdk = 21
+        minSdkVersion(21)
+        targetSdkVersion(33)
     }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
-    }
-
-    kotlinOptions {
-        jvmTarget = "17"
     }
 }
 
@@ -47,4 +45,5 @@ repositories {
 dependencies {
     val cloudstream = "master-SNAPSHOT"
     implementation("com.github.recloudstream:cloudstream:$cloudstream")
+    implementation("org.jsoup:jsoup:1.15.4")
 }
