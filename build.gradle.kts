@@ -1,5 +1,4 @@
 import com.lagradost.cloudstream3.gradle.CloudstreamExtension
-import com.android.build.gradle.BaseExtension
 
 buildscript {
     repositories {
@@ -18,16 +17,15 @@ apply(plugin = "com.android.library")
 apply(plugin = "kotlin-android")
 apply(plugin = "com.lagradost.cloudstream3.gradle")
 
-configure<CloudstreamExtension> {
+cloudstream {
     setRepoUrl("https://github.com/eksborgs/uncenx-extension")
 }
 
-configure<BaseExtension> {
-    compileSdkVersion(33)
+android {
+    compileSdk = 33
 
     defaultConfig {
-        minSdkVersion(21)
-        targetSdkVersion(33)
+        minSdk = 21
     }
 
     compileOptions {
