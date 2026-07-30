@@ -1,8 +1,10 @@
+import com.lagradost.cloudstream3.gradle.CloudstreamExtension
+
 buildscript {
     repositories {
         google()
         mavenCentral()
-        maven("https://jitpack.io")
+        maven { url = uri("https://jitpack.io") }
     }
     dependencies {
         classpath("com.android.tools.build:gradle:7.4.2")
@@ -15,6 +17,10 @@ apply(plugin = "com.android.library")
 apply(plugin = "kotlin-android")
 apply(plugin = "com.lagradost.cloudstream3.gradle")
 
+configure<CloudstreamExtension> {
+    setRepoUrl("https://github.com/eksborgs/uncenx-extension")
+}
+
 android {
     compileSdk = 33
 
@@ -23,19 +29,19 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 }
 
 repositories {
     google()
     mavenCentral()
-    maven("https://jitpack.io")
+    maven { url = uri("https://jitpack.io") }
 }
 
 dependencies {
