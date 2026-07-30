@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
 
     steps:
       - uses: actions/checkout@v3
@@ -25,7 +26,7 @@ jobs:
         run: |
           mkdir -p logs
           chmod +x ./gradlew || true
-          gradle build --no-daemon --stacktrace 2>&1 | tee logs/build.log
+          gradle build --no-daemon 2>&1 | tee logs/build.log
 
       - name: Upload Auto Log
         if: always()

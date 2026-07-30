@@ -7,7 +7,7 @@ buildscript {
     dependencies {
         classpath("com.android.tools.build:gradle:7.4.2")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.22")
-        classpath("com.github.recloudstream:gradle:master-SNAPSHOT")
+        classpath("com.github.recloudstream:gradle:3.0.1")
     }
 }
 
@@ -43,7 +43,6 @@ repositories {
 }
 
 dependencies {
-    val cloudstream = "master-SNAPSHOT"
-    implementation("com.github.recloudstream:cloudstream:$cloudstream")
+    implementation("com.github.recloudstream:cloudstream:3.0.1")
     implementation("org.jsoup:jsoup:1.15.4")
 }
