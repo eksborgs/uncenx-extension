@@ -21,21 +21,15 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
 
-      - name: Build with Gradle & Generate Log
+      - name: Execute Gradle Build & Capture Log
         run: |
           mkdir -p logs
-          gradle build --no-daemon --info 2>&1 | tee logs/build.log
+          chmod +x ./gradlew || true
+          gradle build --no-daemon --stacktrace 2>&1 | tee logs/build.log
 
-      - name: Upload Build Logs
+      - name: Upload Auto Log
         if: always()
         uses: actions/upload-artifact@v3
         with:
           name: build-execution-log
           path: logs/build.log
-
-      - name: Upload Built Plugins
-        if: success()
-        uses: actions/upload-artifact@v3
-        with:
-          name: cloudstream-plugins
-          path: "**/*.cs3"
